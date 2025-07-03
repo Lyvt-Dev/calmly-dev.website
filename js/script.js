@@ -54,48 +54,42 @@ particlesJS("particles-js", {
   "retina_detect": true
 });
 
-// Falls du noch andere Effekte in script.js hast, belasse sie und ergänze diesen Code
-
-// GSAP Plugins registrieren
-gsap.registerPlugin(ScrollTrigger, SplitText);
-
-// Wenn die Seite vollständig geladen ist
 window.addEventListener("DOMContentLoaded", () => {
   const el = document.getElementById("animated-title");
   if (!el) return;
 
-  // Text in einzelne Zeichen splitten
+
   const splitter = new SplitText(el, {
-    type: "chars", // Alternativ: "words", "lines", "words,chars"
+    type: "chars", 
   });
 
   const chars = splitter.chars;
 
-  // Optional: Verbesserung der Performance durch will-change
+
   chars.forEach((char) => {
     char.style.willChange = "transform, opacity";
   });
 
-  // Scroll-basierte Timeline erstellen
+
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: el,
-      start: "top 80%", // Wenn 80% vom Viewport erreicht sind
+      start: "top 80%", 
       toggleActions: "play none none none",
-      once: true, // Nur einmal abspielen
+      once: true, 
     },
   });
 
-  // Startzustand setzen
+
   tl.set(chars, { opacity: 0, y: 40 });
 
-  // Animation ausführen
+
   tl.to(chars, {
     opacity: 1,
     y: 0,
     duration: 0.6,
     ease: "power3.out",
-    stagger: 0.05, // Zeit zwischen einzelnen Buchstaben
+    stagger: 0.05, 
   });
 });
 function decryptTextEffect({
@@ -137,7 +131,7 @@ function decryptTextEffect({
     (entries) => {
       if (entries[0].isIntersecting) {
         scramble();
-        observer.disconnect(); // Nur einmal abspielen
+        observer.disconnect();
       }
     },
     {
@@ -148,7 +142,6 @@ function decryptTextEffect({
   observer.observe(el);
 }
 
-// Effekt starten
 decryptTextEffect({
   elementId: 'decrypted-text',
   speed: 40,
