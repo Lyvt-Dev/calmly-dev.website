@@ -13,7 +13,7 @@
   />
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <style>
-    /* Gleiche Basis-Styles wie index.html */
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -131,7 +131,7 @@
       font-size: 1.2rem;
     }
 
-    /* Card Container */
+
     .card {
       background: var(--card-bg-light);
       border-radius: 15px;
@@ -145,7 +145,7 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     }
 
-    /* Passwort Anzeige Input */
+
     #passwordDisplay {
       width: 100%;
       font-size: 1.4rem;
@@ -163,7 +163,7 @@
       box-shadow: 0 0 10px var(--accent);
     }
 
-    /* Buttons */
+
     button {
       background-color: var(--accent);
       color: white;
@@ -182,7 +182,7 @@
       transform: scale(1.05);
     }
 
-    /* Meter */
+
     #strengthMeter {
       width: 100%;
       height: 15px;
@@ -202,7 +202,7 @@
       transition: width 0.3s ease, background-color 0.3s ease;
     }
 
-    /* Strength text */
+
     #strengthText {
       margin-top: 0.5rem;
       font-weight: 700;
@@ -211,7 +211,7 @@
       color: var(--accent);
     }
 
-    /* Footer */
+
     footer {
       margin-top: 4rem;
       padding: 1rem 0;
@@ -265,7 +265,7 @@
   </footer>
 
   <script>
-    // Dark mode toggle persistence
+
     function toggleTheme() {
       const html = document.documentElement;
       const current = html.getAttribute("data-theme") || "light";
@@ -276,7 +276,6 @@
     const savedTheme = localStorage.getItem("theme") || "light";
     document.documentElement.setAttribute("data-theme", savedTheme);
 
-    // tsParticles background (leichter, ruhiger Effekt)
     tsParticles.load("tsparticles", {
       background: { color: { value: "transparent" } },
       fpsLimit: 60,
@@ -303,7 +302,7 @@
       detectRetina: true,
     });
 
-    // Password generator function
+
     function generatePassword(length = 16) {
       const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?";
       let password = "";
@@ -313,30 +312,23 @@
       return password;
     }
 
-    // Password strength checker (simple scoring)
     function checkStrength(password) {
       let score = 0;
       if (!password) return score;
 
-      // Länge Punkte
       if (password.length >= 8) score += 20;
       if (password.length >= 12) score += 20;
       if (password.length >= 16) score += 20;
 
-      // Kleinbuchstaben
       if (/[a-z]/.test(password)) score += 15;
-      // Großbuchstaben
       if (/[A-Z]/.test(password)) score += 15;
-      // Zahlen
       if (/\d/.test(password)) score += 15;
-      // Sonderzeichen
       if (/[!@#$%^&*()_\-+=<>?]/.test(password)) score += 15;
 
       if (score > 100) score = 100;
       return score;
     }
 
-    // Update meter and text
     function updateStrengthMeter(score) {
       const meterBar = document.querySelector("#strengthMeter > div");
       meterBar.style.width = score + "%";
@@ -344,16 +336,16 @@
       let text = "Sehr Schwach";
 
       if (score >= 80) {
-        color = "#22c55e"; // grün
+        color = "#22c55e"; 
         text = "Sehr Stark";
       } else if (score >= 60) {
-        color = "#a3e635"; // hellgrün
+        color = "#a3e635"; 
         text = "Stark";
       } else if (score >= 40) {
-        color = "#facc15"; // gelb
+        color = "#facc15"; 
         text = "Mittel Stark";
       } else if (score >= 20) {
-        color = "#f97316"; // orange
+        color = "#f97316"; 
         text = "Schwach";
       }
 
@@ -361,7 +353,6 @@
       document.getElementById("strengthText").textContent = `Passwort Stärke: ${text}`;
     }
 
-    // Event Listener Generator Button
     document.getElementById("generateBtn").addEventListener("click", () => {
       const pw = generatePassword(16);
       const input = document.getElementById("passwordDisplay");
@@ -370,7 +361,6 @@
       updateStrengthMeter(strength);
     });
 
-    // Event Listener Copy Button
     document.getElementById("copyBtn").addEventListener("click", () => {
       const input = document.getElementById("passwordDisplay");
       if (!input.value) {
@@ -384,7 +374,6 @@
       });
     });
 
-    // Event Listener input password checker (live)
     document.getElementById("passwordDisplay").addEventListener("input", (e) => {
       const val = e.target.value;
       const strength = checkStrength(val);
