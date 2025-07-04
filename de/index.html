@@ -116,7 +116,7 @@
     }
     .dark-toggle {
       position: fixed;
-      top: 1rem;
+      top: 4rem;
       right: 1rem;
       background: var(--accent);
       color: white;
@@ -136,7 +136,7 @@
 
     .lang-toggle {
       position: fixed;
-      top: 1rem;
+      top: 4rem;
       left: 1rem;
       background: var(--accent);
       color: white;
@@ -303,6 +303,37 @@
       transform: scale(1.3);
       color: #2563eb;
     }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      header.section h1 {
+        font-size: 2.5rem;
+      }
+      header.section p {
+        font-size: 1.1rem;
+      }
+      .skills, .projects {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        padding: 1rem 1.5rem;
+      }
+      .card span {
+        font-size: 1.1rem;
+      }
+      .project-card h3 {
+        font-size: 1.5rem;
+      }
+      nav {
+        gap: 0.5rem; /* Adjust gap for mobile */
+      }
+      nav a {
+        font-size: 0.9rem; /* Slightly smaller font */
+        padding: 0.25rem; /* Adjust padding */
+      }
+    }
   </style>
 </head>
 <body>
@@ -341,7 +372,7 @@
       <h2 class="fade-in" style="--delay: 0.95s">💼 Projects</h2>
       <div class="projects">
         <div class="card project-card fade-in" style="--delay: 1s" onclick="window.open('https://github.com/Lyvt-Dev/Discord-Ticket-Bot', '_blank')">
-          <h3>TicetMate</h3>
+          <h3>TicketMate</h3>
           <p>Ein Open Source und Anpassbarer Ticket Bot für Discord.</p>
         </div>
         <div class="card project-card fade-in" style="--delay: 1.05s" onclick="window.open('https://github.com/Loftyyy/portfolio-website', '_blank')">
@@ -384,7 +415,7 @@
           <i class="fab fa-discord"></i>
         </a>
       </div>
-      <p>&copy; 2025 Calmly. Made with <i class="fas fa-heart"></i> in Germany.</p>
+      <p>&copy; 2025 Luca. Made with <i class="fas fa-heart"></i> in Germany.</p>
     </footer>
   </div>
 
